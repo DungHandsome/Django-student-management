@@ -15,7 +15,10 @@ def home(request):
     else:
         pass
 
-
+@login_required
+def classpage(request, id):
+	data = Class.objects.get(id=id)
+	return render(request, 'homepage/class.html', {'class': data})
 
 def signup_request(request):
 	if request.method == "POST":

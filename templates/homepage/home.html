@@ -16,7 +16,10 @@
             <div class="box" style="border-radius: 7px; border: 2px solid #000;">
                 <h3>Your class</h3>
                 <ul>
-                    <li><a href="#"></a></li>
+                    {% for class in user.student_class.all %}
+
+                    <li><a href="{% url 'classpage' class.id %}">{{class}}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
