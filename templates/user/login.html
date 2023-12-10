@@ -5,8 +5,14 @@
 {% block content %}
              
 
-    <!--Register--> 
-    <div class="container py-5">
+    {% if messages %}
+    <div class="container alert alert-danger" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="container py-5" style="color: #000;">
         <h1>Login</h1>
         <form method="POST">
           {% csrf_token %}

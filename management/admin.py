@@ -10,16 +10,21 @@ class ClassAd(admin.ModelAdmin):
     list_filter = ['class_name']
     search_fields = ['class_name']
 class AssignmentAd(admin.ModelAdmin):
-    list_display = ['assignment_name']
-    list_filter = ['assignment_name']
-    search_fields = ['assignment_name']
+    list_display = ['assignment_title']
+    list_filter = ['assignment_title']
+    search_fields = ['assignment_title']
 class StudentAd(admin.ModelAdmin):
     list_display = ['username']
     list_filter = ['username']
     search_fields = ['username']
+class AnnouncementAd(admin.ModelAdmin):
+    list_display = ['tittle']
+    list_filter = ['tittle']
+    search_fields = ['tittle']
 
 
 admin.site.register(Grade, CourseAd)
 admin.site.register(Class, ClassAd)
 admin.site.register(Assignment, AssignmentAd)
 admin.site.register(mystudent, StudentAd)
+admin.site.register(Announcement, AnnouncementAd)

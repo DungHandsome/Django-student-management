@@ -9,16 +9,19 @@ class Grade(models.Model):
 
 class Class(models.Model):
     course = models.ForeignKey(Grade, on_delete=models.CASCADE)
+    class_note = models.TextField(null=True)
     class_name = models.CharField(max_length=1000)
     def __str__(self):
         return (self.class_name)
 
 class Assignment(models.Model):
     assignment_class = models.ForeignKey(Class, on_delete=models.CASCADE, null=True)
-    assignment_name = models.CharField(max_length=1000)
-    file = models.FileField(upload_to ='uploads/')
+    status = models.BooleanField(null=True, default=True)
+    due_date = models.DateTimeField(null=True)
+    assignment_title = models.CharField(max_length=1000, null=True)
+    assignment_file = models.FileField(upload_to='assignment', null=True)
     def __str__(self):
-        return (self.assignment_name)
+        return (self.assignment_title)
 
 class mystudent(AbstractUser):
     student_class = models.ManyToManyField(Class, null=True)
@@ -33,3 +36,9 @@ class mystudent(AbstractUser):
     avatar = models.ImageField(null=True)
 
 
+class Announcement(models.Model):
+    tittle = models.CharField(max_length=1000)
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return (self.tittle)

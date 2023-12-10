@@ -10,11 +10,15 @@ User = get_user_model()
 # Create your views here.
 @login_required
 def home(request):
-    if request.user.is_authenticated:
-        return render(request, 'homepage/home.html',)
-    else:
-        pass
+	announce = Announcement.objects.all().order_by('-date')
+	return render(request, 'homepage/home.html', {'announcement': announce})
 
+
+	#if request.user.is_authenticated:
+	#	announce = Announcement.objects.all().order_by('-date')
+	#    return render(request, 'homepage/home.html',)
+	#else:
+	#	pass
 @login_required
 def classpage(request, id):
 	data = Class.objects.get(id=id)
