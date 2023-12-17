@@ -23,7 +23,14 @@ class Assignment(models.Model):
     def __str__(self):
         return (self.assignment_title)
 
+class accFilter(models.Model):
+    name = models.CharField(max_length=1000)
+    Student = models.BooleanField(default=False, null=True)
+    def __str__(self):
+        return (self.name)
+
 class mystudent(AbstractUser):
+    student = models.ForeignKey(accFilter, on_delete=models.SET_NULL, null=True)
     student_class = models.ManyToManyField(Class, null=True)
     fullname = models.CharField(max_length=500, null=True)
     username = models.CharField(max_length=200, unique=True)
@@ -35,8 +42,16 @@ class mystudent(AbstractUser):
     password = models.CharField(max_length=100)
     avatar = models.ImageField(null=True)
 
-
 class Announcement(models.Model):
+    
+    tittle = models.CharField(max_length=1000)
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return (self.tittle)
+    
+class TeacherAnnouncement(models.Model):
+    
     tittle = models.CharField(max_length=1000)
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)

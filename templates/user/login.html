@@ -21,4 +21,16 @@
         </form>
         <p class="text-center">Don't have an account? <a href="{% url 'signup' %}">Create an account</a>.</p>
       </div>
+
+
+    <script>
+      {% if messages %}
+      {% for message in messages %}
+      window.addEventListener('load', function () {
+  alert("{{ message }}")
+})
+        {% endfor %}
+      {% endif %}
+    </script>
+    
 {% endblock %}

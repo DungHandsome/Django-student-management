@@ -21,10 +21,15 @@ class AnnouncementAd(admin.ModelAdmin):
     list_display = ['tittle']
     list_filter = ['tittle']
     search_fields = ['tittle']
-
+class accAd(admin.ModelAdmin):
+    list_display = ['name']
+    list_filter = ['name']
+    search_fields = ['name']
 
 admin.site.register(Grade, CourseAd)
 admin.site.register(Class, ClassAd)
 admin.site.register(Assignment, AssignmentAd)
 admin.site.register(mystudent, StudentAd)
 admin.site.register(Announcement, AnnouncementAd)
+admin.site.register(TeacherAnnouncement, AnnouncementAd)
+admin.site.register(accFilter, accAd)

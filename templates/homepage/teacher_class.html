@@ -1,0 +1,9 @@
+{% extends '../base.html' %}
+{% block title %}{{class.class_name}} - DHVA{% endblock %}
+{% block content %}
+
+{% for student in student %}
+<p>{{student.fullname}}</p>
+{% endfor %}
+
+{% endblock %}

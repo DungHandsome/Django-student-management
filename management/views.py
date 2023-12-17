@@ -10,31 +10,44 @@ User = get_user_model()
 # Create your views here.
 @login_required
 def home(request):
-	announce = Announcement.objects.all().order_by('-date')
-	return render(request, 'homepage/home.html', {'announcement': announce})
-
+	student_announce = Announcement.objects.all().order_by('-date')
+	teacher_announce = TeacherAnnouncement.objects.all().order_by('-date')
+	
+	user = request.user
+	if user.student.name == "Student":
+		return render(request, 'homepage/student_home.html', {'announcement': student_announce})
+	else:
+		return render(request, 'homepage/teacher_home.html', {'announcement': teacher_announce})
 
 	#if request.user.is_authenticated:
 	#	announce = Announcement.objects.all().order_by('-date')
 	#    return render(request, 'homepage/home.html',)
 	#else:
 	#	pass
+
+
 @login_required
 def classpage(request, id):
 	data = Class.objects.get(id=id)
-	return render(request, 'homepage/class.html', {'class': data})
+	student = mystudent.objects.filter(student_class = data)
+	user = request.user
+	if user.student.name == "Student":
+		return render(request, 'homepage/student_class.html', {'class': data})
+	else:
+		return render(request, 'homepage/teacher_class.html', {'class': data,'student': student},)
+	
 
 def signup_request(request):
-	if request.method == "POST":
-		form = NewUserForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			login(request, user)
-			messages.success(request, "Registration successful." )
-			return redirect("home")
-		messages.error(request, "Unsuccessful registration. Invalid information.")
-	form = NewUserForm()
-	return render (request=request, template_name="user/signup.html", context={"register_form":form})
+		if request.method == "POST":
+			form = NewUserForm(request.POST)
+			if form.is_valid():
+				user = form.save()
+				login(request, user)
+				messages.success(request, "Registration successful." )
+				return redirect("home")
+			messages.error(request, "Unsuccessful registration. Invalid information.")
+		form = NewUserForm()
+		return render (request=request, template_name="user/signup.html", context={"register_form":form})
 
 def login_request(request):
 	if request.method == "POST":
