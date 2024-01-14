@@ -37,17 +37,6 @@ def classpage(request, id):
 		return render(request, 'homepage/teacher_class.html', {'class': data,'student': student},)
 	
 
-def signup_request(request):
-		if request.method == "POST":
-			form = NewUserForm(request.POST)
-			if form.is_valid():
-				user = form.save()
-				login(request, user)
-				messages.success(request, "Registration successful." )
-				return redirect("home")
-			messages.error(request, "Unsuccessful registration. Invalid information.")
-		form = NewUserForm()
-		return render (request=request, template_name="user/signup.html", context={"register_form":form})
 
 def login_request(request):
 	if request.method == "POST":
@@ -56,10 +45,10 @@ def login_request(request):
 			username = form.cleaned_data.get('username')
 			password = form.cleaned_data.get('password')
 			user = authenticate(username=username, password=password)
-			if user is not None:
+			if user:
 				login(request, user)
 				messages.info(request, f"You are now logged in as {username}.")
-				return redirect("home")
+				return redirect('home')
 			else:
 				messages.error(request,"Invalid username or password.")
 		else:
@@ -76,6 +65,5 @@ def logout_request(request):
 
 @login_required
 def student_details(request, id):
-	data = {
-		mystudent.objects.get(id=id)
-	}
+	student = mystudent.objects.get(id=id)
+	return render(request, 'homepage/student/student_detail.html', {'student': student})

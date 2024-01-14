@@ -34,12 +34,12 @@ class mystudent(AbstractUser):
     student_class = models.ManyToManyField(Class, null=True)
     fullname = models.CharField(max_length=500, null=True)
     username = models.CharField(max_length=200, unique=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, null=True)
     sex_choices = ((0, 'Nam'), (1, 'Nữ'), (2, 'Không xác định'))
     age = models.IntegerField(default=0)
+    birthdate = models.DateField(null=True)
     sex = models.IntegerField(choices=sex_choices, default=0)
     country = models.CharField(max_length=200)
-    password = models.CharField(max_length=100)
     avatar = models.ImageField(null=True)
 
 class Announcement(models.Model):

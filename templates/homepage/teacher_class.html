@@ -87,7 +87,7 @@
                 <div class="card-body">
                     {% for student in student %}
                         <div class="mb-4">
-                            <a href="http://">
+                            <a href="{% url 'studentpage' student.id %}">
                             <div class="card border-left-primary shadow h-100">
                                 <div class="pt-2 pb-2 p-2" style="min-height: 1px; flex: 1 1 auto">
                                     <div class="row no-gutters align-items-center">

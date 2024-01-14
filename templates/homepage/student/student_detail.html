@@ -1,0 +1,156 @@
+{% extends '../../base.html' %}
+{% load static %}
+{% block title %}Homepage - DHVA{% endblock %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="text-center">
+        <h1 class="text-dark">{{student.fullname}}</h1>
+    </div>
+    <div class="row">
+
+
+        <!-- Pie Chart -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Student details</h6>
+                    
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                        <div class="mb-4">
+                            <div class="card border-left-primary shadow h-100">
+                                <div class="pt-2 pb-2 p-2" style="min-height: 1px; flex: 1 1 auto">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Name: {{student.fullname}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="card border-left-primary shadow h-100">
+                                <div class="pt-2 pb-2 p-2" style="min-height: 1px; flex: 1 1 auto">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Age: {{student.age}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-input-numeric fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="card border-left-primary shadow h-100">
+                                <div class="pt-2 pb-2 p-2" style="min-height: 1px; flex: 1 1 auto">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Birthdate: {{student.birthdate}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-input-numeric fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="card border-left-primary shadow h-100">
+                                <div class="pt-2 pb-2 p-2" style="min-height: 1px; flex: 1 1 auto">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            {% if student.sex == 0 %}
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Gender: Male</div>
+                                            {% elif student.sex == 1 %}
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Gender: Female</div>
+                                            {% else %}
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Gender: Not define</div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-venus-mars fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="card border-left-primary shadow h-100">
+                                <div class="pt-2 pb-2 p-2" style="min-height: 1px; flex: 1 1 auto">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Country: {{student.country}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-globe fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Area Chart -->
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Class Links</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-plus fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                            aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Dropdown Header:</div>
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="Student-place pr-3 pl-3">
+                        <div class="mb-4">
+                            <a href="http://">
+                            <div class="card border-left-primary shadow h-100">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">General link</div>
+                                            
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-link fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+{% endblock %}
