@@ -41,6 +41,7 @@ class mystudent(AbstractUser):
     sex = models.IntegerField(choices=sex_choices, default=0)
     country = models.CharField(max_length=200)
     avatar = models.ImageField(null=True)
+    bio = models.TextField(null=True)
 
 class Announcement(models.Model):
     
