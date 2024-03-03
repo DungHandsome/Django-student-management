@@ -35,7 +35,7 @@ def classpage(request, id):
 		return render(request, 'homepage/student_class.html', {'class': data})
 	else:
 		return render(request, 'homepage/teacher_class.html', {'class': data,'student': student},)
-	
+
 
 
 def login_request(request):
